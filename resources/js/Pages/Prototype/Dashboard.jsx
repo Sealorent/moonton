@@ -42,8 +42,7 @@ export default function Dashboard() {
                                 category="Action • Horror"
                                 thumbnail={`https://picsum.photos/seed/${index}/300/300`}
                                 rating={index + 1}                           
-                            />
-                        ))}
+                            />                        ))}
                        
                     </Flickity>
                 </div>
