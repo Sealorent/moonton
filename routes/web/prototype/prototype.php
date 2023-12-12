@@ -20,3 +20,8 @@ route::get('/dashboard', function () {
 route::get('/subcriptionPlan', function () {
     return Inertia::render('Prototype/Layouts/Subcription/SubcriptionPlan');
 })->name('subcriptionPlan');
+
+
+route::get('/movie/{slug}', function () {
+    return Inertia::render('Prototype/Layouts/Movie/Show');
+})->name('movie.show');

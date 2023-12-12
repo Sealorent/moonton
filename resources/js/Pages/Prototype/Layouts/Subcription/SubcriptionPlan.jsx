@@ -43,9 +43,6 @@ export default function SubcriptionPlan() {
                         ]}
                         
                     />
-                    
-
-                 
                 </div>
                 {/* <!-- /Pricing Card --> */}
             </div>
