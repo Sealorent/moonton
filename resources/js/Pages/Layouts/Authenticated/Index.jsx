@@ -1,5 +1,5 @@
-import Sidebar from "@/Pages/Prototype/Layouts/Authenticated/Sidebar";
-import Topbar from "@/Pages/Prototype/Layouts/Authenticated/Topbar";
+import Sidebar from "@/Pages/Layouts/Authenticated/Sidebar";
+import Topbar from "@/Pages/Layouts/Authenticated/Topbar";
 
 export default function Authenticated({ auth, children }) {
     return (
@@ -13,7 +13,7 @@ export default function Authenticated({ auth, children }) {
                 <div className="ml-[300px] px-[50px]">
                     <div className="py-10 flex flex-col gap-[50px]">
                         {/* START: Topbar */}
-                        <Topbar  />
+                        <Topbar name={ auth.user.name }  />
                         {/* END: Topbar */}
                         <main>{children}</main>
                     </div>

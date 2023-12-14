@@ -1,4 +1,4 @@
-import Authenticated from "@/Pages/Prototype/Layouts/Authenticated/Index";
+import Authenticated from "@/Pages/Layouts/Authenticated/Index";
 import SubcriptionCard from "@/Components/Prototype/SubcriptionCard";
 
 
