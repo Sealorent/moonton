@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\UserSubcription;
 
 class User extends Authenticatable
 {
@@ -43,4 +46,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+
+    /**
+     * Get all of the activeSubcriptions for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function activeSubcriptions()
+    {
+        if( !$this->lastActiveSubcriptions )
+        {
+            return false;
+        }
+        $dateNow = Carbon::now();
+        $dateExpired = Carbon::create($this->lastActiveSubcriptions->expired_date);
+        return $dateNow->lessThanOrEqualTo($dateExpired);
+
+    }
+
+
+    /**
+     * Get all of the LastActiveSubcriptions for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+
+    public function lastActiveSubcriptions()
+    {
+        return $this->hasOne(UserSubcription::class)->where('payment_status', 'paid')->latest();
+    }
+
+   
 }

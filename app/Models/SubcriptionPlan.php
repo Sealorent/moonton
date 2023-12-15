@@ -10,6 +10,8 @@ class SubcriptionPlan extends Model
 {
     use HasFactory, SoftDeletes;
 
+    
+
     protected $fillable = [
         'name',
         'price',

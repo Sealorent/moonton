@@ -5,8 +5,9 @@ import React, { useEffect } from 'react';
 import MovieCard from "@/Components/Prototype/MovieCard";
 import FeaturedMovie from "@/Components/Prototype/FeaturedMovie";
 
-export default function Dashboard({ auth, featuredMovies, movies  }) {
+export default function Dashboard({ auth, featuredMovies, movies, login  }) {
 
+    console.log(login);
      const flickityOptions = {
         initialIndex: 0,
         cellAlign: 'left',
@@ -61,7 +62,6 @@ export default function Dashboard({ auth, featuredMovies, movies  }) {
                                 thumbnail={item.thumbnail}
                            />
                         ))}
-                       
                     </Flickity>
                 </div>
         </Authenticated>

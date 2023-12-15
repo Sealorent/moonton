@@ -13,6 +13,7 @@ class DashboardController extends Controller
     {
         return Inertia::render('User/Dashboard/Index', [
             'movies' => Movie::all(),
+            'login' => auth()->user()->last_active_subcriptions == null,
             'featuredMovies' => Movie::whereIsFeatured(true)->get(),
         ]);
     }

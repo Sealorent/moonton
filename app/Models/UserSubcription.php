@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\SubcriptionPlan;
 
 
 class UserSubcription extends Model
 {
     use HasFactory , SoftDeletes;
 
+    protected $table = 'user_subcriptions';
+
     protected $fillable = [
         'user_id',
-        'subscription_plan_id',
+        'subcription_plan_id',
         'price',
         'expired_date',
         'payment_status',
@@ -26,8 +29,9 @@ class UserSubcription extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function subscriptionPlan(): BelongsTo
+    public function subcriptionPlan(): BelongsTo
     {
-        return $this->belongsTo(SubscriptionPlan::class);
+        return $this->belongsTo(SubcriptionPlan::class);
     }
+    
 }

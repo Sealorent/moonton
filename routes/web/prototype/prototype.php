@@ -18,10 +18,10 @@ route::get('/dashboard', function () {
 
 
 route::get('/subcriptionPlan', function () {
-    return Inertia::render('Prototype/Layouts/Subcription/SubcriptionPlan');
+    return Inertia::render('Layouts/Subcription/SubcriptionPlan');
 })->name('subcriptionPlan');
 
 
 route::get('/movie/{slug}', function () {
-    return Inertia::render('Prototype/Layouts/Movie/Show');
+    return Inertia::render('Layouts/Movie/Show');
 })->name('movie.show');

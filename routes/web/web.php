@@ -34,7 +34,7 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('index');
+    include_route_files(__DIR__.'/user/');
 });
 
 Route::middleware('auth')->group(function () {
