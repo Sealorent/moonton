@@ -5,9 +5,10 @@ import React, { useEffect } from 'react';
 import MovieCard from "@/Components/Prototype/MovieCard";
 import FeaturedMovie from "@/Components/Prototype/FeaturedMovie";
 
-export default function Dashboard() {
+export default function Dashboard({ auth, featuredMovies, movies, login  }) {
 
-    const flickityOptions = {
+    console.log(login);
+     const flickityOptions = {
         initialIndex: 0,
         cellAlign: 'left',
         contain: true,
@@ -21,7 +22,7 @@ export default function Dashboard() {
 
     
     return (
-        <Authenticated>
+        <Authenticated auth={auth}>
                 <Head>
                     <link
                         rel="stylesheet"
@@ -34,16 +35,16 @@ export default function Dashboard() {
                         Featured Movies
                     </div>
                     <Flickity className="gap-[30px]" options={flickityOptions}>
-                        {Array(10).fill().map((item, index) => (
+                        {featuredMovies.map((item, index) => (
                             <FeaturedMovie
-                                key={index}
-                                slug="the-batman-in-love"
-                                name={`The Batman in Love ${index}`}
-                                category="Action • Horror"
-                                thumbnail={`https://picsum.photos/seed/${index}/300/300`}
-                                rating={index + 1}                           
-                            />                        ))}
-                       
+                                key={item.id}
+                                slug={item.slug}
+                                name={item.name}
+                                category={item.category}
+                                thumbnail={item.thumbnail}
+                                rating={item.rating}                           
+                            />                        
+                        ))}
                     </Flickity>
                 </div>
                 <div className="mt-[50px]">
@@ -52,16 +53,15 @@ export default function Dashboard() {
                     </div>
                     <Flickity className="gap-[30px]" options={flickityOptions}>
                         {/* <!-- Movies  --> */}
-                        {Array(10).fill().map((item, index) => (
+                        {movies.map((item, index) => (
                            <MovieCard
-                                key={index}
-                                slug="/the-batman-in-love"
-                                name={`The Batman in Love ${index}`}
-                                category="Action • Horror"
-                                thumbnail={`https://picsum.photos/seed/${index}/300/300`}
+                                key={item.id}
+                                slug={item.slug}
+                                name={item.name}
+                                category={item.category}
+                                thumbnail={item.thumbnail}
                            />
                         ))}
-                       
                     </Flickity>
                 </div>
         </Authenticated>

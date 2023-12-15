@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleTableSeeder::class,
             UserTableSeeder::class,
+            SubcriptionPlanTableSeeder::class,
+            MovieTableSeeder::class,
         ]);
     }
 }
